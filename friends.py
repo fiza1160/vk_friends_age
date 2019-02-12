@@ -1,4 +1,5 @@
 import requests
+import sys
 
 
 def calc_age(uid):
@@ -73,5 +74,6 @@ def format_data_for_output(age_dict):
 
 
 if __name__ == '__main__':
-    res = calc_age('reigning')
+    uid = sys.argv[1]
+    res = calc_age(uid)
     print(res)
