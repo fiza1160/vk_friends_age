@@ -1,9 +1,21 @@
 import requests
 import sys
+import os
+
+
+VK_TOKEN_NAME = 'VK_TEST_TOKEN'
+
+
+def get_token():
+    if VK_TOKEN_NAME not in os.environ:
+        text_error = 'Environment variable {key} not found'.format(key=VK_TOKEN_NAME)
+        raise ValueError(text_error)
+
+    return os.environ[VK_TOKEN_NAME]
 
 
 def calc_age(uid):
-    token = '8abcb1528abcb1528abcb152408ad43e5388abc8abcb152d6e13d15574a6a3ca2d54608'
+    token = get_token()
 
     id = get_id(uid, token)
     friends = get_friends(id, token)
